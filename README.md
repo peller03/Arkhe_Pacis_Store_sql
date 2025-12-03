@@ -76,7 +76,7 @@ The SQL script answers key business questions, including:
 
 ### SQL File Reference (IMPORTANT)
 
-#### All SQL queries used in this project—data cleaning, EDA, and business analysis—are stored in:
+#### All SQL queries used in this project data cleaning, EDA, and business analysis are stored in:
 
  [`SQL_capston.sql`](SQL_capston.sql)
 
@@ -85,6 +85,54 @@ This file includes:
 
 Data cleaning queries
 
+```sql
+-- To check if there is duplicate row in sales table 
+SELECT 
+    Customer_ID, Product_ID, Date, Quantity, Price, Discount,
+    COUNT(*) AS occurrences
+FROM [dbo].[Sales_sql]
+GROUP BY  Customer_ID, Product_ID, Date, Quantity, Price, Discount
+HAVING COUNT(*) > 1; -- it shows row with the same data greater than the unique
+
+
+-- To check if there is duplicate row in product table
+SELECT
+       Product_ID,
+	   Product_Name,
+	   Category,
+	   Supplier_ID,
+	   Cost_Price,
+	   COUNT(*) AS occurrence 
+FROM [dbo].[product_sql]
+GROUP BY Product_ID,Product_Name,Category,Supplier_ID,Cost_Price
+HAVING COUNT( *) > 1
+
+-- To check if there is duplicate row in Customer table
+SELECT 
+       Customer_ID,
+	   Name,
+	   Age,
+	   Region,
+	   COUNT(*) AS occurrence 
+FROM[dbo].[customer]
+GROUP BY Customer_ID,Name,Age,Region
+HAVING  COUNT(*) > 1
+
+-- Addind column to Show the final price after the discount is active
+
+ALTER TABLE [dbo].[Sales_sql]
+ADD  Final_Price DECIMAL(10, 2);
+
+ALTER TABLE [dbo].[Sales_sql]
+ALTER COLUMN Price DECIMAL(10, 2); -- change the column data type from money to decimal to avoid data type conflict 
+
+UPDATE [dbo].[Sales_sql]
+SET Final_Price = Price * (1 - Discount); --To know actual price paid after discount  
+
+SELECT * FROM [dbo].[Sales_sql]
+
+```
+
 Table modification statements
 
 KPI calculations
@@ -92,6 +140,35 @@ KPI calculations
 Joins across all datasets
 
 CTE-based analysis
+```sql
+-- highest-value customers across product categories.
+
+WITH total_spent AS(
+SELECT 
+          c.Customer_ID,
+		  c.Name,
+		  P.Category,
+		  SUM(s.Quantity * s.Final_Price) AS total_spent
+FROM [dbo].[Sales_sql] s
+JOIN [dbo].[customer] c ON c.Customer_ID = s.Customer_ID
+JOIN [dbo].[product_sql] p ON p.Product_ID = s.Product_ID
+GROUP BY s.Sale_ID,c.Customer_ID,c.Name,p.Category
+), high_value_customer AS(
+SELECT 
+        *,
+		ROW_NUMBER() OVER (PARTITION BY Category ORDER BY total_spent DESC) AS rank
+FROM total_spent
+)
+SELECT  
+      customer_id,
+	  name,
+	  category,
+	  total_spent,
+	  rank
+FROM high_value_customer
+WHERE rank = 1
+
+```
 
 Ranking queries (ROW_NUMBER)
 
@@ -107,6 +184,16 @@ Anyone reviewing the project can simply click the link above to see the full SQL
 Key insights from the analysis include:
 
 - Identification of high-value customers driving sales
+```sql
+SELECT  TOP 10
+         name,
+		 SUM(s.Quantity * s.Final_Price) AS Revenue
+		 
+FROM [dbo].[Sales_sql] s
+JOIN [dbo].[customer] c ON c.Customer_ID = s.Customer_ID
+GROUP BY c.name
+ORDER BY Revenue DESC
+```
 
 - Clear peak periods across months and seasons
 
