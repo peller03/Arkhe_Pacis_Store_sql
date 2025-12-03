@@ -1,0 +1,54 @@
+Product_ID,Product_Name,Category,Supplier_ID,Cost_Price
+P001,Smartwatch,Electronics,S001,$15.00 
+P002,Electric Kettle,Home Appliances,S002,$25.00 
+P003,Screwdriver Set,Hardware,S003,$10.00 
+P004,Wireless Mouse,Accessories,S004,$5.00 
+P005,Wireless Earbuds,Electronics,S005,$30.00 
+P006,Office Chair,Office Supplies,S006,$12.50 
+P007,Blender,Home Appliances,S007,$45.00 
+P008,Laptop,Electronics,S008,$20.00 
+P009,Cordless Drill,Hardware,S009,$18.00 
+P010,Phone Case,Accessories,S010,$7.50 
+P011,Desktop Computer,Electronics,S001,$16.00 
+P012,Microwave Oven,Home Appliances,S002,$22.00 
+P013,Hammer,Hardware,S003,$11.50 
+P014,Stylus Pen,Accessories,S004,$6.00 
+P015,Tablet,Electronics,S005,$35.00 
+P016,Desk Lamp,Office Supplies,S006,$13.00 
+P017,Air Conditioner,Home Appliances,S007,$40.00 
+P018,Smart TV,Electronics,S008,$21.50 
+P019,Adjustable Wrench,Hardware,S009,$19.00 
+P020,USB Hub,Accessories,S010,$8.50 
+P021,Bluetooth Speaker,Electronics,S001,$17.00 
+P022,Vacuum Cleaner,Home Appliances,S002,$27.00 
+P023,Socket Set,Hardware,S003,$12.00 
+P024,Laptop Sleeve,Accessories,S004,$5.50 
+P025,Digital Camera,Electronics,S005,$32.50 
+P026,Paper Shredder,Office Supplies,S006,$11.00 
+P027,Water Dispenser,Home Appliances,S007,$42.50 
+P028,Webcam,Electronics,S008,$23.00 
+P029,Pliers,Hardware,S009,$20.00 
+P030,Screen Protector,Accessories,S010,$9.00 
+P031,Gaming Console,Electronics,S001,$18.50 
+P032,Toaster,Home Appliances,S002,$24.00 
+P033,Tape Measure,Hardware,S003,$10.50 
+P034,Cable Organizer,Accessories,S004,$4.75 
+P035,LED Monitor,Electronics,S005,$31.50 
+P036,File Cabinet,Office Supplies,S006,$13.25 
+P037,Gas Cooker,Home Appliances,S007,$44.00 
+P038,Projector,Electronics,S008,$19.50 
+P039,Utility Knife,Hardware,S009,$17.50 
+P040,Bluetooth Tracker,Accessories,S010,$6.50 
+P041,Wireless Router,Electronics,S001,$16.75 
+P042,Hair Dryer,Home Appliances,S002,$26.50 
+P043,Level Tool,Hardware,S003,$14.00 
+P044,HDMI Cable,Accessories,S004,$5.25 
+P045,Power Bank,Electronics,S005,$29.75 
+P046,Printer,Office Supplies,S006,$12.75 
+P047,Rice Cooker,Home Appliances,S007,$41.25 
+P048,Noise Cancelling Headset,Electronics,S008,$22.25 
+P049,Sledgehammer,Hardware,S009,$19.75 
+P050,External SSD Case,Accessories,S010,$8.75 
+P051,VR Headset,Electronics,S001,$15.75 
+P052,Iron,Home Appliances,S002,$23.75 
+P053,Toolbox,Hardware,S003,$11.25 
